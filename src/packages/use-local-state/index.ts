@@ -8,7 +8,7 @@ export interface Patch<T> {
 
 export default function useLocalState<State>(key: string, initialState?: State) {
   if (!key || typeof key !== 'string') {
-    throw new Error('key must by a wstring')
+    throw new Error('key must be string')
   }
 
   const getLocalState = () => {
