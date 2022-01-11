@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import useNextEffect from '../use-next-effect';
-import { isFunction } from '../utils'
 
-export interface Patch<T> {
-  (prevState?: T): T;
-}
+type SetState<State> = (
+  state: State | undefined | ((prevState?: State) => State)
+) => void;
 
-export default function useLocalState<State>(key: string, initialState?: State) {
+export default function useLocalState<State>(key: string, initialState?: State): [State | undefined, SetState<State>] {
   if (!key || typeof key !== 'string') {
     throw new Error('key must be string')
   }
@@ -25,17 +24,17 @@ export default function useLocalState<State>(key: string, initialState?: State) 
 
   const [state, setState] = useState<State | undefined>(() => getLocalState());
 
-  const _setState = (payload?: State | Patch<State>) => {
+  const _setState: SetState<State> = (payload) => {
     if (typeof payload === 'undefined') {
       setState(undefined)
       localStorage.removeItem(key)
-    } else if (isFunction<Patch<State>>(payload)) {
+    } else if (payload instanceof Function) {
       try {
         let currentState = payload(state);
         setState(payload)
         localStorage.setItem(key, JSON.stringify(currentState))
       } catch (e) {
-        console.log(e)
+        console.error(e)
       }
     } else {
       try {
