@@ -7,7 +7,7 @@ type SetState<State> = (
 
 export default function useLocalState<State>(key: string, initialState?: State): [State | undefined, SetState<State>] {
   if (!key || typeof key !== 'string') {
-    throw new Error('key must be string')
+    throw new Error('useLocalState key must be string')
   }
 
   const getLocalState = () => {
@@ -17,7 +17,7 @@ export default function useLocalState<State>(key: string, initialState?: State):
         return JSON.parse(sessionData) as State
       }
     } catch (e) {
-      console.log(e)
+      console.error(e)
     }
     return initialState ?? undefined
   }

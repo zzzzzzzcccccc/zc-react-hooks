@@ -4,6 +4,9 @@ import useNextEffect from './packages/use-next-effect';
 import useLocalState from './packages/use-local-state';
 import useLast from './packages/use-last';
 import useDeepEffect from './packages/use-deep-effect';
+import useMount from './packages/use-mount';
+import useUnmount from './packages/use-unmount';
+import useRetry from './packages/use-retry';
 
 export {
   useSetState,
@@ -12,4 +15,7 @@ export {
   useLocalState,
   useLast,
   useDeepEffect,
+  useMount,
+  useUnmount,
+  useRetry,
 }

@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "react-hooks",
   "main": "src/index.ts",
+  "keywords": [
+    "react-hooks"
+  ],
   "scripts": {
     "test:converage": "jest --converage",
     "test:watch": "jest --watchAll",
-    "release": "npm run build && npm publish"
+    "release": "npm publish"
   },
   "author": "zc",
   "license": "ISC",
@@ -19,6 +22,7 @@
     "react-test-renderer": "^17.0.2",
     "ts-jest": "^27.1.2",
     "ts-loader": "^9.2.6",
+    "tslib": "^2.3.1",
     "typescript": "^4.5.4"
   },
   "dependencies": {

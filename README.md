@@ -1,6 +1,6 @@
 ### 说明 (instruction)
 
-| 方法 (Method)                       |   描述 (Description)  |
+| 方法 (Method)                        | 描述 (Description)  |
 | ----                                |  ----                |
 | useSetState                         | Record类型的useState |
 | useBooleanState                     | Boolean类型的useState |
@@ -8,3 +8,6 @@
 | useLocalState                       | localStorage版本的useState |
 | useLast                             | 获取最新的值使用，用于处理hook闭包问题 |
 | useDeepEffect                       | 使用lodash/isEqual对比useEffect deps (深度对比) |
+| useMount                            | 组件装在时 |
+| useUnmount                          | 组件卸载时 |
+| useRetry                            | 自动重试异步任务，一般用于http请求重试 |
