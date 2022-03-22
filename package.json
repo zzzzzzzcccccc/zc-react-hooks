@@ -1,6 +1,6 @@
 {
   "name": "zc-react-hook-tools",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "react-hooks",
   "main": "src/index.ts",
   "keywords": [
