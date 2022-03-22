@@ -9,16 +9,23 @@
   "scripts": {
     "test:converage": "jest --converage",
     "test:watch": "jest --watchAll",
-    "release": "npm publish"
+    "release": "npm publish",
+    "prettier:fix": "prettier --write ./src"
   },
   "author": "zc",
   "license": "ISC",
   "devDependencies": {
+    "@testing-library/dom": "^8.11.3",
+    "@testing-library/jest-dom": "^5.16.2",
+    "@testing-library/react": "^12.1.2",
     "@testing-library/react-hooks": "^7.0.2",
+    "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.4.0",
     "@types/lodash": "^4.14.178",
     "@types/react": "^17.0.38",
     "jest": "^27.4.7",
+    "prettier": "^2.6.0",
+    "react-dom": "^17.0.2",
     "react-test-renderer": "^17.0.2",
     "ts-jest": "^27.1.2",
     "ts-loader": "^9.2.6",

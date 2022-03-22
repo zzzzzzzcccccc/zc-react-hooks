@@ -7,6 +7,9 @@ import useDeepEffect from './packages/use-deep-effect';
 import useMount from './packages/use-mount';
 import useUnmount from './packages/use-unmount';
 import useRetry from './packages/use-retry';
+import useRect from './packages/use-rect';
+import useWindowResize from './packages/use-window-resize';
+import useTriggerWindow from './packages/use-trigger-window';
 
 export {
   useSetState,
@@ -18,4 +21,7 @@ export {
   useMount,
   useUnmount,
   useRetry,
-}
+  useRect,
+  useWindowResize,
+  useTriggerWindow,
+};

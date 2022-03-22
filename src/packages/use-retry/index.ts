@@ -8,19 +8,19 @@ export interface Options<T> {
 }
 
 export default function useRetry<T>(task: Task<T>, options: Options<T>): [Task<T>, boolean, any[]] {
-  const { count = 3, onResolved, onRejected } = options
+  const { count = 3, onResolved, onRejected } = options;
   const [loading, setLoading] = useState(false);
   const [errorList, setErrorList] = useState<any[]>([]);
   const retryCountRef = useRef(count);
   const retriedCountRef = useRef(0);
 
-  if (count <= 0) throw new Error('useRetry count <= 0')
+  if (count <= 0) throw new Error('useRetry count <= 0');
 
   const clear = () => {
     setLoading(false);
     retriedCountRef.current = 0;
     retryCountRef.current = count;
-  }
+  };
 
   const addError = (e: any) => setErrorList([...errorList, e]);
 
@@ -45,11 +45,7 @@ export default function useRetry<T>(task: Task<T>, options: Options<T>): [Task<T
         return await runTasks();
       }
     }
-  }
+  };
 
-  return [
-    runTasks,
-    loading,
-    errorList,
-  ]
+  return [runTasks, loading, errorList];
 }

@@ -6,11 +6,11 @@ describe('test useNextEffect', () => {
     let mountedState = 1;
     const hook = renderHook(() => {
       useNextEffect(() => {
-        mountedState = 2
-      }, [])
-    })
-    expect(mountedState).toEqual(1)
-    hook.rerender()
-    expect(mountedState).toEqual(1)
-  })
-})
+        mountedState = 2;
+      }, []);
+    });
+    expect(mountedState).toEqual(1);
+    hook.rerender();
+    expect(mountedState).toEqual(1);
+  });
+});

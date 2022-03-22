@@ -11,3 +11,6 @@
 | useMount                            | 组件装在时 |
 | useUnmount                          | 组件卸载时 |
 | useRetry                            | 自动重试异步任务，一般用于http请求重试 |
+| useRect                             | 获取dom尺寸信息 |
+| useWindowResize                     | 监听window窗口变化(带去抖函数) |
+| useTriggerWindow                    | 用于同域下多窗口通信(使用localStorage实现) |
