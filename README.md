@@ -14,3 +14,5 @@
 | useRect                             | 获取dom尺寸信息 |
 | useWindowResize                     | 监听window窗口变化(带去抖函数) |
 | useTriggerWindow                    | 用于同域下多窗口通信(使用localStorage实现) |
+| useWhoUpdated                       | 用于检测组件props或state变化 |
+| useWindowVisibility                 | 用于监听浏览器tab切换 |

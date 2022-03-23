@@ -1,11 +1,12 @@
 {
-  "extends": "./base-tsconfig.json",
   "compilerOptions": {
     "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
-      "esnext"
+      "esnext",
+      "es5",
+      "es2015.promise"
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -19,9 +20,16 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "declaration": true,
+    "declarationDir": "./dist/types",
+    "types": ["node"],
+    "outDir": "./dist"
   },
   "include": [
-    "src"
+    "packages"
+  ],
+  "exclude": [
+    "./dist"
   ]
 }
