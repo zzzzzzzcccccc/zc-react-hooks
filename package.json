@@ -11,6 +11,7 @@
     "react-hooks"
   ],
   "scripts": {
+    "test": "jest",
     "test:watch": "jest --watchAll",
     "prettier:fix": "prettier --write ./packages",
     "build": "set NODE_ENV=production && rimraf dist && rollup -c rollup.config.js",

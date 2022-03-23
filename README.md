@@ -1,3 +1,18 @@
+### 安装
+
+```shell
+# npm
+npm install zc-react-hook-tools
+```
+
+### 使用
+
+```ts
+import { useSetState } from 'zc-react-hook-tools'
+
+// TODO use useSetState
+```
+
 ### 说明 (instruction)
 
 | 方法 (Method)                        | 描述 (Description)  |

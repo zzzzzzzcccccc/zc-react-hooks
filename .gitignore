@@ -10,7 +10,7 @@
 
 # production
 /build
-/dist/**/*
+dist
 
 # misc
 .DS_Store
@@ -20,7 +20,6 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-package-lock.json
 
 # workspaces
 .vscode
