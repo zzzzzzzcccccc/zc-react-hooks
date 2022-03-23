@@ -1,21 +1,21 @@
-import { renderHook, act } from "@testing-library/react-hooks";
-import useWhoUpdated from "../index";
-import { useState } from "react";
+import { renderHook, act } from '@testing-library/react-hooks';
+import useWhoUpdated from '../index';
+import { useState } from 'react';
 
-const mockComponentName = "countComponentName";
+const mockComponentName = 'countComponentName';
 
 function useTemplate() {
   return renderHook(() => {
     const [count, setCount] = useState(0);
     useWhoUpdated(mockComponentName, { count });
     return {
-      setCount
+      setCount,
     };
   });
 }
 
-describe("test useWhoUpdated", () => {
-  it("when state change show log", () => {
+describe('test useWhoUpdated', () => {
+  it('when state change show log', () => {
     console.log = jest.fn();
     const hook = useTemplate();
 
@@ -26,8 +26,8 @@ describe("test useWhoUpdated", () => {
     expect(console.log).toHaveBeenCalledWith(`useWhoUpdated - ${mockComponentName}`, {
       count: {
         before: 0,
-        after: 50
-      }
+        after: 50,
+      },
     });
   });
 });

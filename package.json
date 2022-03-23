@@ -1,6 +1,6 @@
 {
   "name": "zc-react-hook-tools",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "react-hooks",
   "main": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "test:watch": "jest --watchAll",
-    "prettier:fix": "prettier --write ./src",
+    "prettier:fix": "prettier --write ./packages",
     "build": "set NODE_ENV=production && rimraf dist && rollup -c rollup.config.js",
     "release": "npm run prettier:fix && npm run build && npm publish"
   },

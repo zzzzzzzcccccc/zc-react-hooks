@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 type Patch = {
   toggle: () => void;
@@ -14,7 +14,7 @@ export default function useBooleanState(initialState: boolean): [boolean, Patch]
     {
       toggle: () => setBool(!bool),
       setTrue: () => setBool(true),
-      setFalse: () => setBool(false)
-    }
+      setFalse: () => setBool(false),
+    },
   ];
 }

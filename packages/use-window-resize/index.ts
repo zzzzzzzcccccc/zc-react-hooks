@@ -1,5 +1,5 @@
-import { useLayoutEffect, useState } from "react";
-import { debounce } from "lodash";
+import { useLayoutEffect, useState } from 'react';
+import { debounce } from 'lodash';
 
 export type Options = {
   wait: number;
@@ -18,7 +18,7 @@ export interface WindowSize {
 
 const initialOptions: Options = {
   wait: 300,
-  ignoreDebounce: true
+  ignoreDebounce: true,
 };
 
 export default function useWindowResize(fn?: CallbackFunction, options: Options = initialOptions): [WindowSize] {
@@ -34,8 +34,8 @@ export default function useWindowResize(fn?: CallbackFunction, options: Options 
   };
 
   useLayoutEffect(() => {
-    window.addEventListener("resize", listenerResize);
-    return () => window.removeEventListener("resize", listenerResize);
+    window.addEventListener('resize', listenerResize);
+    return () => window.removeEventListener('resize', listenerResize);
   }, []);
 
   return [windowSize];
