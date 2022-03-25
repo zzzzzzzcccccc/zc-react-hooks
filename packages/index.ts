@@ -11,6 +11,8 @@ import useRect from './use-rect';
 import useWindowResize from './use-window-resize';
 import useTriggerWindow from './use-trigger-window';
 import useWhoUpdated from './use-who-updated';
+import useRafInterval from './use-raf-interval';
+import useList from './use-list';
 
 export {
   useSetState,
@@ -26,4 +28,8 @@ export {
   useWindowResize,
   useTriggerWindow,
   useWhoUpdated,
+  useRafInterval,
+  useList,
 };
+
+export * from './utils';

@@ -1,12 +1,16 @@
 {
   "name": "zc-react-hook-tools",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "react-hooks",
   "main": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "umd": "dist/index.umd.js",
   "cjs": "dist/index.cjs.js",
   "amd": "dist/index.amd.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zzzzzzzcccccc/zc-react-hooks.git"
+  },
   "keywords": [
     "react-hooks"
   ],
