@@ -1,7 +1,11 @@
 import '@testing-library/jest-dom';
 
+/**
+ * mock localStorage
+ */
 class OverviewStorage implements Storage {
   [file: string]: any;
+
   length = 0;
   map = new Map<string, string>();
 
