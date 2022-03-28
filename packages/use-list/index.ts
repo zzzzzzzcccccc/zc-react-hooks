@@ -32,34 +32,40 @@ export default function useList<T>(initialList: T[] = []): [T[], Methods<T>] {
   };
 
   const move: Methods<T>['move'] = (oldIndex: number, newIndex: number) => {
-    let temp = list[oldIndex],
-      tempList = list;
+    setList((prev) => {
+      let temp = prev[oldIndex],
+        tempList = prev;
 
-    tempList[oldIndex] = tempList[newIndex];
-    tempList[newIndex] = temp;
+      tempList[oldIndex] = tempList[newIndex];
+      tempList[newIndex] = temp;
 
-    setList(tempList);
+      return tempList;
+    });
   };
 
   const replace: Methods<T>['replace'] = (payload: T, index: number) => {
     if (index < 0) {
       throw new Error('useList replace index > 0');
     }
-    const tempList = list;
-    tempList[index] = payload;
 
-    setList(tempList);
+    setList((prev) => {
+      let tempList = [...prev];
+      tempList[index] = payload;
+
+      return tempList;
+    });
   };
 
   const merge: Methods<T>['merge'] = (payload: T[], startIndex: number) => {
     if (startIndex < 0) {
       throw new Error('useList merge startIndex > 0');
     }
-    const tempList = list;
 
-    tempList.splice(startIndex, 0, ...payload);
-
-    setList(tempList);
+    setList((prev) => {
+      const tempList = [...prev];
+      tempList.splice(startIndex, 0, ...payload);
+      return tempList;
+    });
   };
 
   const shift: Methods<T>['shift'] = () => {

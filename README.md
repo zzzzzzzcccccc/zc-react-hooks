@@ -17,12 +17,12 @@ import { useSetState } from 'zc-react-hook-tools'
 
 #### hook-tools
 
-| Method                              | Description  |
-| ----                                |  ----                |
-| useSetState                         | Record类型的useState |
-| useBooleanState                     | Boolean类型的useState |
+| Method                              | Description  |                                          demo                 |
+| ----                                |  ----                | --- |
+| useSetState                         | Record类型的useState | https://codesandbox.io/s/stupefied-phoebe-54yskd |
+| useBooleanState                     | Boolean类型的useState | https://codesandbox.io/s/elated-mayer-zi75rv |
 | useNextEffect                       | 用于处理重复渲染的问题，这个会自动屏蔽第一次render |
-| useLocalState                       | localStorage版本的useState |
+| useLocalState                       | localStorage版本的useState | https://codesandbox.io/s/recursing-sun-55jgnc |
 | useLast                             | 获取最新的值使用，用于处理hook闭包问题 |
 | useDeepEffect                       | 使用lodash/isEqual对比useEffect deps (深度对比) |
 | useMount                            | 组件装在时 |

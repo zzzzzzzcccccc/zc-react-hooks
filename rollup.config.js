@@ -2,6 +2,7 @@ const path = require("path");
 const typescript = require("rollup-plugin-typescript2");
 const commonjs = require("rollup-plugin-commonjs");
 const resolve = require("rollup-plugin-node-resolve");
+const babel = require('rollup-plugin-babel');
 const pkg = require("./package.json");
 
 const extensions = [
@@ -46,7 +47,16 @@ module.exports = {
     resolve({
       extensions
     }),
-    commonjs(),
+    babel({
+      exclude: /node_modules/,
+      presets: [
+        ['@babel/env', { loose: true, modules: false }],
+        '@babel/preset-react'
+      ]
+    }),
+    commonjs({
+      include: /node_modules/
+    }),
     typescript({
       tsconfig: resolvePath("./tsconfig.json"),
       extensions
