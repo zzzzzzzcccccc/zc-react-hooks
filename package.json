@@ -1,6 +1,6 @@
 {
   "name": "zc-react-hook-tools",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "react-hooks",
   "main": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -26,6 +26,7 @@
   "devDependencies": {
     "@babel/core": "^7.16.12",
     "@babel/preset-env": "^7.16.11",
+    "@rollup/plugin-commonjs": "^21.0.3",
     "@testing-library/dom": "^8.11.3",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
@@ -43,15 +44,16 @@
     "react-test-renderer": "^17.0.2",
     "rimraf": "^3.0.2",
     "rollup": "^2.70.1",
+    "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-typescript2": "^0.31.2",
     "ts-jest": "^27.1.2",
-    "tslib": "^2.3.1",
     "typescript": "^4.5.4"
   },
   "dependencies": {
-    "loadsh": "0.0.4",
-    "react": "^17.0.2"
+    "lodash": "^4.14.178",
+    "react": "^17.0.2",
+    "tslib": "^2.3.1"
   }
 }
