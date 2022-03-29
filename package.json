@@ -1,6 +1,6 @@
 {
   "name": "zc-react-hook-tools",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "react-hooks",
   "main": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -22,7 +22,7 @@
     "release": "npm run prettier:fix && npm run build && npm publish"
   },
   "author": "zc",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.16.12",
     "@babel/preset-env": "^7.16.11",
@@ -52,6 +52,7 @@
     "typescript": "^4.5.4"
   },
   "dependencies": {
+    "copy-to-clipboard": "^3.3.1",
     "lodash": "^4.14.178",
     "react": "^17.0.2",
     "tslib": "^2.3.1"
