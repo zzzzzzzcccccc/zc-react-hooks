@@ -20,3 +20,16 @@ _2022-03-25_
 
 * Add use-list
 * Add use-raf-interval
+
+### v.1.0.4
+
+_2022-03-27_
+
+* Add use-raf-timer
+* Add RafTimer
+
+### v1.0.5
+
+_2022-03-29_
+
+* Add use-clipboard

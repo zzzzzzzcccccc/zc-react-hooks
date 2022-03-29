@@ -13,6 +13,7 @@ import useTriggerWindow from './use-trigger-window';
 import useWhoUpdated from './use-who-updated';
 import useRafInterval from './use-raf-interval';
 import useList from './use-list';
+import useClipboard from './use-clipboard';
 
 export {
   useSetState,
@@ -30,6 +31,7 @@ export {
   useWhoUpdated,
   useRafInterval,
   useList,
+  useClipboard,
 };
 
 export * from './utils';

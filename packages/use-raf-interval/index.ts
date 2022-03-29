@@ -4,8 +4,12 @@ import { RafTimer } from '../utils';
 export type CallBack = (intervalCount: number) => void;
 export type Paused = () => void;
 export type Run = () => void;
+export type Reset = () => void;
 
-export default function useRafInterval(fn?: CallBack, interval = 1000): [number, boolean, Paused, Run] {
+export default function useRafInterval(
+  interval = 1000,
+  fn?: CallBack,
+): [Run, Paused, Reset, { stop: Boolean; intervalCount: number }] {
   const [intervalCount, setIntervalCount] = useState(0);
   const [stop, setStop] = useState(false);
   const timer = useRef<Symbol | null>();
@@ -18,12 +22,13 @@ export default function useRafInterval(fn?: CallBack, interval = 1000): [number,
   };
 
   const run: Run = () => {
-    clearTimer();
     setStop(false);
     timer.current = RafTimer.setInterval(() => {
-      let afterIntervalCount = intervalCount + 1;
-      setIntervalCount(afterIntervalCount);
-      fn?.(afterIntervalCount);
+      setIntervalCount((prev) => {
+        const after = prev + 1;
+        fn?.(after);
+        return after;
+      });
     }, interval);
   };
 
@@ -32,10 +37,22 @@ export default function useRafInterval(fn?: CallBack, interval = 1000): [number,
     setStop(true);
   };
 
+  const reset = () => {
+    paused();
+    setIntervalCount(0);
+  };
+
   useEffect(() => {
-    run();
-    return paused;
+    return reset;
   }, []);
 
-  return [intervalCount, stop, paused, run];
+  return [
+    run,
+    paused,
+    reset,
+    {
+      stop,
+      intervalCount,
+    },
+  ];
 }
