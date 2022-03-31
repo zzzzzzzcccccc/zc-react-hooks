@@ -14,6 +14,10 @@ import useWhoUpdated from './use-who-updated';
 import useRafInterval from './use-raf-interval';
 import useList from './use-list';
 import useClipboard from './use-clipboard';
+import useCounter from './use-counter';
+import useActiveSelection from './use-active-selection';
+
+import { RafTimer } from './utils';
 
 export {
   useSetState,
@@ -32,6 +36,7 @@ export {
   useRafInterval,
   useList,
   useClipboard,
+  useCounter,
+  useActiveSelection,
+  RafTimer,
 };
-
-export * from './utils';

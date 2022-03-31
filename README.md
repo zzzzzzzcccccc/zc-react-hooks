@@ -33,6 +33,8 @@ import { useSetState } from 'zc-react-hook-tools'
 | useRafInterval                      | hook版本定时器，基于`RafTimer`实现性能优于`setInterval`,可暂停启动 |
 | useList                             | hook版本TodoList |  |
 | useClipboard                        | hook版本clipboard | |
+| useCounter                          | 计数器可设置最大值最小值 | |
+| useActiveSelection                  | 获取鼠标光标选中文案 | |
 
 #### js-tools
 | Method                              | Description  |  demo |
