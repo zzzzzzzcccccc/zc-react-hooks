@@ -33,3 +33,10 @@ _2022-03-27_
 _2022-03-29_
 
 * Add use-clipboard
+
+### v1.0.6
+
+_2022-03-31_
+
+* Add use-counter
+* Add use-active-selection

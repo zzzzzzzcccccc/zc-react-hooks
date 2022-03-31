@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import copy from 'copy-to-clipboard';
 
 export interface ClipboardOptions {
