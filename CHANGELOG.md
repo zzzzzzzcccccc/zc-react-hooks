@@ -40,3 +40,9 @@ _2022-03-31_
 
 * Add use-counter
 * Add use-active-selection
+
+### v1.0.7
+
+_2022-03-31_
+
+* fix use-active-selection bug
