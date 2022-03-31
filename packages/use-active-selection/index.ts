@@ -7,6 +7,8 @@ export interface Rect {
   bottom: number;
   width: number;
   height: number;
+  x: number;
+  y: number;
 }
 
 export type TargetValue<T> = T | undefined | null;
@@ -23,6 +25,8 @@ const initialState: State = {
   width: 0,
   height: 0,
   text: '',
+  x: 0,
+  y: 0,
 };
 
 export default function useActiveSelection(target?: Target<Element | Document>): [State] {
@@ -49,11 +53,24 @@ export default function useActiveSelection(target?: Target<Element | Document>):
     const selection = window.getSelection();
     if (selection) {
       const selectionText = selection.toString();
-      let selectionTextRect: Rect = initialState;
       if (selectionText && selection.rangeCount >= 1) {
-        selectionTextRect = selection.getRangeAt(0).getBoundingClientRect();
+        const rect = selection.getRangeAt(0).getBoundingClientRect();
+        setState({
+          text: selectionText,
+          width: rect.width,
+          height: rect.height,
+          left: rect.left,
+          right: rect.right,
+          top: rect.top,
+          bottom: rect.bottom,
+          x: rect.x,
+          y: rect.y,
+        });
+      } else {
+        setState({ ...initialState });
       }
-      setState((prev) => ({ ...prev, ...selectionTextRect, text: selectionText }));
+    } else {
+      setState({ ...initialState });
     }
   };
 
