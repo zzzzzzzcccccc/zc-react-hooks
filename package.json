@@ -1,6 +1,6 @@
 {
   "name": "zc-react-hook-tools",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "react-hooks",
   "main": "dist/index.esm.js",
   "types": "dist/index.d.ts",

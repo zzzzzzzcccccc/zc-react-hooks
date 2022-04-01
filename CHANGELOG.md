@@ -46,3 +46,9 @@ _2022-03-31_
 _2022-03-31_
 
 * fix use-active-selection bug
+
+### v1.0.8
+
+_2022-04-01_
+
+* optimize use-active-selection

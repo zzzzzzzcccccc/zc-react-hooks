@@ -35,6 +35,7 @@ import { useSetState } from 'zc-react-hook-tools'
 | useClipboard                        | hook版本clipboard | |
 | useCounter                          | 计数器可设置最大值最小值 | |
 | useActiveSelection                  | 获取鼠标光标选中文案 | |
+| useRafTimeout                       | 基于`RafTimer`实现setTimeout | |
 
 #### js-tools
 | Method                              | Description  |  demo |
