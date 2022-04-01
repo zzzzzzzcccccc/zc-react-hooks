@@ -16,6 +16,7 @@ import useList from './use-list';
 import useClipboard from './use-clipboard';
 import useCounter from './use-counter';
 import useActiveSelection from './use-active-selection';
+import useRafTimeout from './use-raf-timeout';
 
 import { RafTimer } from './utils';
 
@@ -38,5 +39,6 @@ export {
   useClipboard,
   useCounter,
   useActiveSelection,
+  useRafTimeout,
   RafTimer,
 };
