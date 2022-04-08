@@ -17,6 +17,9 @@ import useClipboard from './use-clipboard';
 import useCounter from './use-counter';
 import useActiveSelection from './use-active-selection';
 import useRafTimeout from './use-raf-timeout';
+import useNetwork from './use-network';
+import useKeyboard from './use-keyboard';
+import useEventOutside from './use-event-outside';
 
 import { RafTimer } from './utils';
 
@@ -40,5 +43,8 @@ export {
   useCounter,
   useActiveSelection,
   useRafTimeout,
+  useNetwork,
+  useKeyboard,
+  useEventOutside,
   RafTimer,
 };

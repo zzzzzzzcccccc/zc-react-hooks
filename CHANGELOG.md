@@ -52,3 +52,11 @@ _2022-03-31_
 _2022-04-01_
 
 * optimize use-active-selection
+
+### v1.0.9
+
+_2022-04-08_
+
+* Add use-list methods `sort` `query` `toTree`
+* Add use-network
+* Add use-event-outside
