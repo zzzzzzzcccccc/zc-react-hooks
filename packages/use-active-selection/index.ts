@@ -80,11 +80,11 @@ export default function useActiveSelection(target?: Target<Element | Document>):
     if (!dom) return;
 
     dom.addEventListener('mouseup', handleOnMouseUp);
-    document.addEventListener('mousedown', handleOnMouseDown);
+    dom.addEventListener('mousedown', handleOnMouseDown);
 
     return () => {
       dom.removeEventListener('mouseup', handleOnMouseUp);
-      document.removeEventListener('mousedown', handleOnMouseDown);
+      dom.removeEventListener('mousedown', handleOnMouseDown);
     };
   }, [target]);
 

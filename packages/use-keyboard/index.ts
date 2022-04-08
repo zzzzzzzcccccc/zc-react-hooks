@@ -20,13 +20,12 @@ export default function useKeyboard(keyCodes: KeyCodes, options?: Options, targe
     throw new Error('useKeyboard keyCodes must be array');
   }
   const currentEvent = options?.listenEvent || 'keydown';
-  let hitCodeLen = 0;
 
   const validKeyCores = (e: KeyboardEvent) => {
     if (!e.key) {
       return false;
     }
-
+    let hitCodeLen = 0;
     for (let i = 0; i < keyCodes.length; i++) {
       const keyCode = keyCodes[i];
       if (typeof keyCode === 'number' && keyCode === e.keyCode) {
