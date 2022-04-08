@@ -1,4 +1,6 @@
-import { useState, MutableRefObject, useRef, useLayoutEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { getElement } from '../utils';
+import { Target } from '../utils/getElement';
 
 export interface Rect {
   left: number;
@@ -11,11 +13,7 @@ export interface Rect {
   y: number;
 }
 
-export type TargetValue<T> = T | undefined | null;
 export type State = { text: string } & Rect;
-export type Target<T extends HTMLElement | Element | Window | Document> =
-  | TargetValue<T>
-  | MutableRefObject<TargetValue<T>>;
 
 const initialState: State = {
   left: 0,
@@ -28,18 +26,6 @@ const initialState: State = {
   x: 0,
   y: 0,
 };
-
-function getElement(target?: Target<Element | Document>) {
-  if (!target) {
-    return document;
-  }
-
-  if ('current' in target) {
-    return target.current;
-  }
-
-  return target;
-}
 
 function getSelectionRectWithText(selection: Selection | null) {
   if (!selection) {
@@ -89,7 +75,7 @@ export default function useActiveSelection(target?: Target<Element | Document>):
     setState((prev) => ({ ...prev, ...getSelectionRectWithText(selection) }));
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const dom = getElement(target);
     if (!dom) return;
 
