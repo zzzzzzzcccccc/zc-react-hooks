@@ -9,19 +9,15 @@ export interface ClipboardOptions {
 }
 
 export type ClipboardState = { success: boolean; isCopied: boolean };
-export type RunCopy = () => ClipboardState;
+export type RunCopy = (text: string) => ClipboardState;
 export type Reset = () => void;
 
-export default function useClipboard(
-  targetText: string,
-  interval = 0,
-  options?: ClipboardOptions,
-): [RunCopy, ClipboardState, Reset] {
+export default function useClipboard(interval = 0, options?: ClipboardOptions): [RunCopy, ClipboardState, Reset] {
   const [state, setState] = useState<ClipboardState>({ success: false, isCopied: false });
 
-  const runCopy = () => {
+  const runCopy = (text: string) => {
     const _state = { ...state };
-    _state.success = copy(targetText, options);
+    _state.success = copy(text, options);
     _state.isCopied = true;
     setState(_state);
     return _state;
