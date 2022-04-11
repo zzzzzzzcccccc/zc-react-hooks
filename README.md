@@ -12,6 +12,8 @@ import { useSetState } from 'zc-react-hook-tools'
 
 ### Docs
 
+#### [Sandbox](https://codesandbox.io/dashboard/all/zc-react-hook-tools?workspace=aef8c8df-20db-4fec-a47a-cd290d986617)
+
 #### hook-tools
 
 | Method                              | Description  |                                          demo                 |
@@ -32,13 +34,15 @@ import { useSetState } from 'zc-react-hook-tools'
 | useWindowVisibility                 | 用于监听浏览器tab切换 |
 | useRafInterval                      | hook版本定时器，基于`RafTimer`实现性能优于`setInterval`,可暂停启动 |
 | useList                             | hook版本TodoList |  |
-| useClipboard                        | hook版本clipboard | |
+| useClipboard                        | hook版本clipboard | https://codesandbox.io/s/useclipboard-hy704o |
 | useCounter                          | 计数器可设置最大值最小值 | |
-| useActiveSelection                  | 获取鼠标光标选中文案 | |
+| useActiveSelection                  | 获取鼠标光标选中文案 | https://codesandbox.io/s/useactiveselection-8scvjs |
 | useRafTimeout                       | 基于`RafTimer`实现setTimeout | |
-| useNetwork                          | 获取当前设备网络状况 | |
+| useNetwork                          | 获取当前设备网络状况 | https://codesandbox.io/s/usenetwork-4n2hkv |
 | useKeyboard                         | 监听键盘事件 | |
-| useEventOutside                     | 监听触发events不包含某一些dom | |
+| useEventOutside                     | 监听触发events不包含某一些dom | https://codesandbox.io/s/useeventoutside-usy6mt |
+| useObservable                       | hook结合rxjs`BehaviorSubject` | |
+| useAsyncCallback                    | async版本useCallback增加了执行锁 | |
 
 #### js-tools
 | Method                              | Description  |  demo |
