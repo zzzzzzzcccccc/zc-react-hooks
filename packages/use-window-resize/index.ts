@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { debounce } from 'lodash';
 
 export type Options = {
@@ -33,7 +33,7 @@ export default function useWindowResize(fn?: CallbackFunction, options: Options 
     ignoreDebounce ? action() : debounce(action, wait, rest);
   };
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     window.addEventListener('resize', listenerResize);
     return () => window.removeEventListener('resize', listenerResize);
   }, []);

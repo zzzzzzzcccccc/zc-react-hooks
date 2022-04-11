@@ -60,3 +60,22 @@ _2022-04-08_
 * Add use-list methods `sort` `query` `toTree`
 * Add use-network
 * Add use-event-outside
+
+### v1.1.0
+
+_2022-04-09_
+
+* Add use-keyboard
+* Add use-event-outside
+  
+### v1.1.1
+
+_2022-04-10_
+
+* Add use-observable
+  
+### v1.1.2
+
+_2022-04-11_
+
+* Add use-async-callback

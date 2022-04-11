@@ -20,6 +20,8 @@ import useRafTimeout from './use-raf-timeout';
 import useNetwork from './use-network';
 import useKeyboard from './use-keyboard';
 import useEventOutside from './use-event-outside';
+import useObservable from './use-observable';
+import useAsyncCallback from './use-async-callback';
 
 import { RafTimer } from './utils';
 
@@ -46,5 +48,7 @@ export {
   useNetwork,
   useKeyboard,
   useEventOutside,
+  useObservable,
+  useAsyncCallback,
   RafTimer,
 };
