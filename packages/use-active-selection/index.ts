@@ -2,7 +2,16 @@ import { useState, useRef, useEffect } from 'react';
 import { getElement } from '../utils';
 import { Target } from '../utils/getElement';
 
-export interface Rect {
+export interface MouseRect {
+  screenX: number;
+  screenY: number;
+  clientX: number;
+  clientY: number;
+  pageX: number;
+  pageY: number;
+}
+
+export interface Rect extends Partial<MouseRect> {
   left: number;
   right: number;
   top: number;
@@ -25,6 +34,12 @@ const initialState: State = {
   text: '',
   x: 0,
   y: 0,
+  screenX: 0,
+  screenY: 0,
+  clientX: 0,
+  clientY: 0,
+  pageX: 0,
+  pageY: 0,
 };
 
 function getSelectionRectWithText(selection: Selection | null) {
@@ -67,22 +82,34 @@ export default function useActiveSelection(target?: Target<Element | Document>):
     }
   };
 
-  const handleOnMouseUp = () => {
+  const handleOnMouseUp = (e: MouseEvent) => {
     if (!window.getSelection) {
       throw new Error('useActiveSelection window.getSelection not found');
     }
     const selection = window.getSelection();
-    setState((prev) => ({ ...prev, ...getSelectionRectWithText(selection) }));
+    const { screenX, screenY, clientX, clientY, pageX, pageY } = e;
+    setState((prev) => ({
+      ...prev,
+      ...getSelectionRectWithText(selection),
+      screenX,
+      screenY,
+      clientX,
+      clientY,
+      pageX,
+      pageY,
+    }));
   };
 
   useEffect(() => {
     const dom = getElement(target);
     if (!dom) return;
 
+    // @ts-ignore
     dom.addEventListener('mouseup', handleOnMouseUp);
     dom.addEventListener('mousedown', handleOnMouseDown);
 
     return () => {
+      // @ts-ignore
       dom.removeEventListener('mouseup', handleOnMouseUp);
       dom.removeEventListener('mousedown', handleOnMouseDown);
     };

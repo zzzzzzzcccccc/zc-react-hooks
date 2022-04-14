@@ -22,6 +22,7 @@ import useKeyboard from './use-keyboard';
 import useEventOutside from './use-event-outside';
 import useObservable from './use-observable';
 import useAsyncCallback from './use-async-callback';
+import useAsyncEffect from './use-async-effect';
 
 import { RafTimer } from './utils';
 
@@ -50,5 +51,6 @@ export {
   useEventOutside,
   useObservable,
   useAsyncCallback,
+  useAsyncEffect,
   RafTimer,
 };
