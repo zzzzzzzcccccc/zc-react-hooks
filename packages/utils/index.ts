@@ -4,5 +4,6 @@ import stringToLower from './stringToLower';
 import getElement from './getElement';
 import keyboardMapper from './keyboardMapper';
 import isBrowser from './isBrowser';
+import validGenerator from './validGenerator';
 
-export { RafTimer, sortDataList, stringToLower, getElement, keyboardMapper, isBrowser };
+export { RafTimer, sortDataList, stringToLower, getElement, keyboardMapper, isBrowser, validGenerator };

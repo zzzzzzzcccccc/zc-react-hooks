@@ -43,6 +43,7 @@ import { useSetState } from 'zc-react-hook-tools'
 | useEventOutside                     | 监听触发events不包含某一些dom | https://codesandbox.io/s/useeventoutside-usy6mt |
 | useObservable                       | hook结合rxjs`BehaviorSubject` | |
 | useAsyncCallback                    | async版本useCallback增加了执行锁 | |
+| useAsyncEffect                      | async版本useEffect | |
 
 #### js-tools
 | Method                              | Description  |  demo |

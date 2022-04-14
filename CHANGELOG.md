@@ -79,3 +79,7 @@ _2022-04-10_
 _2022-04-11_
 
 * Add use-async-callback
+
+### v1.1.3
+
+* Add use-async-effect
