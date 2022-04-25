@@ -15,7 +15,7 @@ export default function useLocalState<State>(key: string, initialState?: State):
         return JSON.parse(sessionData) as State;
       }
     } catch (e) {
-      console.error(e);
+      throw new Error(`useLocalState JSON.parse error ${e}`);
     }
     return initialState ?? undefined;
   };

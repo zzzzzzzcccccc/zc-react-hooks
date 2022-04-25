@@ -22,41 +22,15 @@ describe('test useTemplate', () => {
     });
     expect(hook.result.current.list).toEqual(['a', 'b', 'c', 'd']);
 
-    act(() => hook.result.current.methods.reset());
-    expect(hook.result.current.list).toEqual([]);
+    act(() => {
+      hook.result.current.methods.merge(['x', 'y', 'z'], 1);
+    });
+    expect(hook.result.current.list).toEqual(['a', 'x', 'y', 'z', 'b', 'c', 'd']);
 
     act(() => {
-      hook.result.current.methods.merge(['a', 'b', 'c'], 0);
+      hook.result.current.methods.move(0, 2);
     });
-    expect(hook.result.current.list).toEqual(['a', 'b', 'c']);
-
-    act(() => {
-      hook.result.current.methods.merge(['e', 'f', 'g'], 1);
-    });
-    expect(hook.result.current.list).toEqual(['a', 'e', 'f', 'g', 'b', 'c']);
-
-    act(() => hook.result.current.methods.reset());
-    expect(hook.result.current.list).toEqual([]);
-
-    act(() => {
-      hook.result.current.methods.push('world');
-    });
-    expect(hook.result.current.list).toEqual(['world']);
-
-    act(() => {
-      hook.result.current.methods.unshift('hello');
-    });
-    expect(hook.result.current.list).toEqual(['hello', 'world']);
-
-    act(() => {
-      hook.result.current.methods.replace('china', 1);
-    });
-    expect(hook.result.current.list).toEqual(['hello', 'china']);
-
-    act(() => {
-      hook.result.current.methods.move(0, 1);
-    });
-    expect(hook.result.current.list).toEqual(['china', 'hello']);
+    expect(hook.result.current.list).toEqual(['x', 'y', 'a', 'z', 'b', 'c', 'd']);
   });
 
   it('when query and sort list', () => {
