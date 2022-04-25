@@ -83,3 +83,7 @@ _2022-04-11_
 ### v1.1.3
 
 * Add use-async-effect
+
+### v1.1.4
+
+* fix use-list `move`

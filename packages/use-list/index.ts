@@ -30,6 +30,8 @@ export type Methods<T> = {
   query: (params: Partial<Record<keyof T, any>>, type?: QueryType) => T[];
   sort: (sortConfig: SortType | SortRecord<T>[]) => T[];
   toTree: (options: TreeOptions<T>) => T[];
+  setList: (state: T[] | undefined | ((prevState?: T[]) => T[])) => void;
+  exchange: (oldIndex: number, newIndex: number) => T[];
 };
 
 export default function useList<T>(initialList: T[] = []): [T[], Methods<T>, T[]] {
@@ -37,7 +39,7 @@ export default function useList<T>(initialList: T[] = []): [T[], Methods<T>, T[]
   const [filterList, setFilterList] = useState<T[]>([]);
 
   const reset: Methods<T>['reset'] = () => {
-    setList([]);
+    setList(initialList);
   };
 
   const push: Methods<T>['push'] = (payload: T | T[]) => {
@@ -70,12 +72,9 @@ export default function useList<T>(initialList: T[] = []): [T[], Methods<T>, T[]
   const move: Methods<T>['move'] = (oldIndex: number, newIndex: number) => {
     let tempList = [...list];
     setList((prev) => {
-      let temp = prev[oldIndex],
-        tempList = [...list];
-
-      tempList[oldIndex] = tempList[newIndex];
-      tempList[newIndex] = temp;
-
+      const tempList = [...prev];
+      const [removed] = tempList.splice(oldIndex, 1);
+      tempList.splice(newIndex, 0, removed);
       return tempList;
     });
     return tempList;
@@ -205,9 +204,34 @@ export default function useList<T>(initialList: T[] = []): [T[], Methods<T>, T[]
     return listToTree(targetListVal === 'list' ? list : filterList);
   };
 
+  const _setList: Methods<T>['setList'] = (payload: T[] | undefined | ((prevState?: T[]) => T[])) => {
+    if (typeof payload === 'undefined') {
+      reset();
+    } else if (payload instanceof Function) {
+      setList(payload(list));
+    } else {
+      setList(payload);
+    }
+  };
+
+  const exchange: Methods<T>['exchange'] = (oldIndex: number, newIndex: number) => {
+    let tempList = [...list];
+    setList((prev) => {
+      let temp = prev[oldIndex],
+        tempList = [...prev];
+
+      tempList[oldIndex] = tempList[newIndex];
+      tempList[newIndex] = temp;
+
+      return tempList;
+    });
+    return tempList;
+  };
+
   return [
     list,
     {
+      setList: _setList,
       reset,
       push,
       unshift,
@@ -220,6 +244,7 @@ export default function useList<T>(initialList: T[] = []): [T[], Methods<T>, T[]
       query,
       sort,
       toTree,
+      exchange,
     },
     filterList,
   ];
