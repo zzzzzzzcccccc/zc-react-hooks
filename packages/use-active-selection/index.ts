@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
-import { getElement } from '../utils';
+import { getElement, isShadowDom } from '../utils';
 import { Target } from '../utils/getElement';
+// @ts-ignore
+import * as shadow from 'shadow-selection-polyfill/shadow';
 
 export interface MouseRect {
   screenX: number;
@@ -43,7 +45,7 @@ const initialState: State = {
   pageY: 0,
 };
 
-function getSelectionWithInnerHTML(selection: Selection | null) {
+function getSelectionWithInnerHTML(selection: Selection | null, target: ShadowRoot | null) {
   if (
     typeof (document as any)?.selection !== 'undefined' &&
     typeof (document as any)?.selection?.createRange !== 'undefined'
@@ -51,9 +53,9 @@ function getSelectionWithInnerHTML(selection: Selection | null) {
     return ((document as any).selection.createRange().htmlText || '') as string;
   } else {
     if (!selection || selection.rangeCount <= 0) {
-      return ''
+      return '';
     }
-    const range = selection.getRangeAt(0);
+    const range = target ? shadow.getRange(target) : selection.getRangeAt(0);
     const clonedSelection = range.cloneContents();
     const div = document.createElement('div');
 
@@ -63,13 +65,13 @@ function getSelectionWithInnerHTML(selection: Selection | null) {
   }
 }
 
-function getSelectionRectWithText(selection: Selection | null) {
+function getSelectionRectWithText(selection: Selection | null, target: ShadowRoot | null) {
   if (!selection) {
     return initialState;
   }
   const selectionText = selection.toString();
   if (selectionText && selection.rangeCount > 0) {
-    const rect = selection.getRangeAt(0).getBoundingClientRect();
+    const rect = (target ? shadow.getRange(target) : selection.getRangeAt(0)).getBoundingClientRect();
     return {
       text: selectionText,
       width: rect.width,
@@ -86,7 +88,7 @@ function getSelectionRectWithText(selection: Selection | null) {
   }
 }
 
-export default function useActiveSelection(target?: Target<Element | Document>): [State] {
+export default function useActiveSelection(target?: Target<Element | Document | ShadowRoot>): [State] {
   const [state, setState] = useState<State>(initialState);
   const currentStateRef = useRef<State>(state);
 
@@ -111,8 +113,8 @@ export default function useActiveSelection(target?: Target<Element | Document>):
     const { screenX, screenY, clientX, clientY, pageX, pageY } = e;
     setState((prev) => ({
       ...prev,
-      ...getSelectionRectWithText(selection),
-      html: getSelectionWithInnerHTML(selection),
+      ...getSelectionRectWithText(selection, isShadowDom(target) ? (target as ShadowRoot) : null),
+      html: getSelectionWithInnerHTML(selection, isShadowDom(target) ? (target as ShadowRoot) : null),
       screenX,
       screenY,
       clientX,

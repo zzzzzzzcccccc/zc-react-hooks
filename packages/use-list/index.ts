@@ -72,9 +72,8 @@ export default function useList<T>(initialList: T[] = []): [T[], Methods<T>, T[]
   const move: Methods<T>['move'] = (oldIndex: number, newIndex: number) => {
     let tempList = [...list];
     setList((prev) => {
-      const tempList = [...prev];
-      const [removed] = tempList.splice(oldIndex, 1);
-      tempList.splice(newIndex, 0, removed);
+      tempList = [...prev];
+      tempList.splice(newIndex, 0, tempList.splice(oldIndex, 1)[0]);
       return tempList;
     });
     return tempList;

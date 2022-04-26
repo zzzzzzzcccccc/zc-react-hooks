@@ -97,3 +97,9 @@ _2022-04-26_
 _2022-04-26_
 
 * Add use-active-selection `html` props
+
+### v1.1.6
+
+_2022-04-27_
+
+* Add use-active-selection `shadow-selection-polyfill`
