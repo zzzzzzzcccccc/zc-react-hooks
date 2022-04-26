@@ -18,6 +18,7 @@ describe('test useActiveSelection', () => {
       x: 0,
       y: 0,
       text: '',
+      html: '',
       screenX: 0,
       screenY: 0,
       clientX: 0,

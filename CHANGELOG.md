@@ -82,8 +82,18 @@ _2022-04-11_
 
 ### v1.1.3
 
+_2022-04-15_
+
 * Add use-async-effect
 
 ### v1.1.4
 
+_2022-04-26_
+
 * fix use-list `move`
+
+### v1.1.5
+
+_2022-04-26_
+
+* Add use-active-selection `html` props
