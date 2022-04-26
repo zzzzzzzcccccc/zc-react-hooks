@@ -22,16 +22,17 @@ export interface Rect extends Partial<MouseRect> {
   y: number;
 }
 
-export type State = { text: string } & Rect;
+export type State = { text: string; html: string } & Rect;
 
 const initialState: State = {
+  text: '',
+  html: '',
   left: 0,
   right: 0,
   top: 0,
   bottom: 0,
   width: 0,
   height: 0,
-  text: '',
   x: 0,
   y: 0,
   screenX: 0,
@@ -42,12 +43,32 @@ const initialState: State = {
   pageY: 0,
 };
 
+function getSelectionWithInnerHTML(selection: Selection | null) {
+  if (
+    typeof (document as any)?.selection !== 'undefined' &&
+    typeof (document as any)?.selection?.createRange !== 'undefined'
+  ) {
+    return ((document as any).selection.createRange().htmlText || '') as string;
+  } else {
+    if (!selection || selection.rangeCount <= 0) {
+      return ''
+    }
+    const range = selection.getRangeAt(0);
+    const clonedSelection = range.cloneContents();
+    const div = document.createElement('div');
+
+    div.appendChild(clonedSelection);
+
+    return div.innerHTML;
+  }
+}
+
 function getSelectionRectWithText(selection: Selection | null) {
   if (!selection) {
     return initialState;
   }
   const selectionText = selection.toString();
-  if (selectionText && selection.rangeCount >= 1) {
+  if (selectionText && selection.rangeCount > 0) {
     const rect = selection.getRangeAt(0).getBoundingClientRect();
     return {
       text: selectionText,
@@ -91,6 +112,7 @@ export default function useActiveSelection(target?: Target<Element | Document>):
     setState((prev) => ({
       ...prev,
       ...getSelectionRectWithText(selection),
+      html: getSelectionWithInnerHTML(selection),
       screenX,
       screenY,
       clientX,
