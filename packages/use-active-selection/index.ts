@@ -55,13 +55,17 @@ function getSelectionWithInnerHTML(selection: Selection | null, target: ShadowRo
     if (!selection || selection.rangeCount <= 0) {
       return '';
     }
-    const range = target ? shadow.getRange(target) : selection.getRangeAt(0);
-    const clonedSelection = range.cloneContents();
-    const div = document.createElement('div');
+    try {
+      const range = target ? shadow.getRange(target) : selection.getRangeAt(0);
+      const clonedSelection = range.cloneContents();
+      const div = document.createElement('div');
 
-    div.appendChild(clonedSelection);
+      div.appendChild(clonedSelection);
 
-    return div.innerHTML;
+      return div.innerHTML;
+    } catch (e) {
+      return '';
+    }
   }
 }
 
@@ -71,18 +75,22 @@ function getSelectionRectWithText(selection: Selection | null, target: ShadowRoo
   }
   const selectionText = selection.toString();
   if (selectionText && selection.rangeCount > 0) {
-    const rect = (target ? shadow.getRange(target) : selection.getRangeAt(0)).getBoundingClientRect();
-    return {
-      text: selectionText,
-      width: rect.width,
-      height: rect.height,
-      left: rect.left,
-      right: rect.right,
-      top: rect.top,
-      bottom: rect.bottom,
-      x: rect.x,
-      y: rect.y,
-    };
+    try {
+      const rect = (target ? shadow.getRange(target) : selection.getRangeAt(0)).getBoundingClientRect();
+      return {
+        text: selectionText,
+        width: rect.width,
+        height: rect.height,
+        left: rect.left,
+        right: rect.right,
+        top: rect.top,
+        bottom: rect.bottom,
+        x: rect.x,
+        y: rect.y,
+      };
+    } catch (e) {
+      return initialState;
+    }
   } else {
     return initialState;
   }
