@@ -103,3 +103,7 @@ _2022-04-26_
 _2022-04-27_
 
 * Add use-active-selection `shadow-selection-polyfill`
+
+### v1.1.7
+
+* Add use-speech-recognition

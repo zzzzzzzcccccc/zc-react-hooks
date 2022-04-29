@@ -44,6 +44,7 @@ import { useSetState } from 'zc-react-hook-tools'
 | useObservable                       | hook结合rxjs`BehaviorSubject` | |
 | useAsyncCallback                    | async版本useCallback增加了执行锁 | |
 | useAsyncEffect                      | async版本useEffect | |
+| use-speech-recognition              | 语音识别目前只有chrome | |
 
 #### js-tools
 | Method                              | Description  |  demo |
