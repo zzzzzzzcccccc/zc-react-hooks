@@ -24,7 +24,7 @@ import useObservable from './use-observable';
 import useAsyncCallback from './use-async-callback';
 import useAsyncEffect from './use-async-effect';
 
-import { RafTimer } from './utils';
+import { RafTimer, getSpeechRecognition } from './utils';
 
 export {
   useSetState,
@@ -53,4 +53,5 @@ export {
   useAsyncCallback,
   useAsyncEffect,
   RafTimer,
+  getSpeechRecognition
 };
