@@ -104,7 +104,7 @@ export default function useActiveSelection(target?: Target<Element | Document | 
     if (!window.getSelection) {
       throw new Error('useActiveSelection window.getSelection not found');
     }
-    if (currentStateRef.current) {
+    if (currentStateRef.current.text) {
       setState({ ...initialState });
     }
     const selection = window.getSelection();
@@ -113,14 +113,14 @@ export default function useActiveSelection(target?: Target<Element | Document | 
     }
   };
 
-  const handleOnMouseUp = (e: MouseEvent) => {
+  const handleOnMouseUp = (e: any) => {
     if (!window.getSelection) {
       throw new Error('useActiveSelection window.getSelection not found');
     }
     const selection = window.getSelection();
     const { screenX, screenY, clientX, clientY, pageX, pageY } = e;
-    setState((prev) => ({
-      ...prev,
+    setState({
+      ...state,
       ...getSelectionRectWithText(selection, isShadowDom(target) ? (target as ShadowRoot) : null),
       html: getSelectionWithInnerHTML(selection, isShadowDom(target) ? (target as ShadowRoot) : null),
       screenX,
@@ -129,21 +129,19 @@ export default function useActiveSelection(target?: Target<Element | Document | 
       clientY,
       pageX,
       pageY,
-    }));
+    });
   };
 
   useEffect(() => {
     const dom = getElement(target);
     if (!dom) return;
 
-    // @ts-ignore
     dom.addEventListener('mouseup', handleOnMouseUp);
-    dom.addEventListener('mousedown', handleOnMouseDown);
+    document.addEventListener('mousedown', handleOnMouseDown);
 
     return () => {
-      // @ts-ignore
       dom.removeEventListener('mouseup', handleOnMouseUp);
-      dom.removeEventListener('mousedown', handleOnMouseDown);
+      document.removeEventListener('mousedown', handleOnMouseDown);
     };
   }, [target]);
 
