@@ -53,5 +53,5 @@ export {
   useAsyncCallback,
   useAsyncEffect,
   RafTimer,
-  getSpeechRecognition
+  getSpeechRecognition,
 };
